@@ -1,0 +1,485 @@
+---
+title: "CNV analysis for preregistration"
+author: "Hayley Mountford, Dorothy Bishop, Paul Thompson, & Dianne Newbury"
+date: "30/05/2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+#
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
+options(scipen = 999) #turn off scientific notation
+
+library(Hmisc) #for correlation matrix
+library(ggplot2)
+library(gridExtra)
+library(ggpubr)
+library(scales)
+require(sandwich)
+require(msm)
+require(lemon) #for glegend
+require(MASS)
+```
+###Title: Copy number variation (CNV) and language phenotype severity in children with a sex chromosome trisomy 
+
+<i>Provide the working title of your study. It is helpful if this is the same title that you submit for publication of your final manuscript, but it is not a requirement.</i>
+
+##Background
+
+Children who carry an extra X or Y chromosome do not have any gross physical or mental abnormalities however there is a pronounced increase in the risk of language impairment and autistic features (Bishop, Jacobs, et al 2011). The rationale for this project is that investigation of the genetic correlates of language and communication variations in children with sex chromosome trisomies (SCT) may lead to improved understanding of common neurodevelopmental disorders in children with a typical karyotype. 
+
+A notable feature of sex chromosome trisomies is the variability of the phenotype, which can range from severe, to minor educational difficulties at most. A range of explanations for this phenotypic variability have been proposed. In a companion paper, Newbury et al (2018) considered the 'double hit' hypothesis, which maintains that the presence of an extra dose of neuroligin associated with overexpression of NLGN4 on X and Y chromosomes could amplify the impact of genetic variants that normally create only a minor risk for neurodevelopmental abnormalities. 
+
+In the current paper, we consider another way in which an extra sex chromosome could amplify genetic risk, by interacting with copy number variants (CNVs).  The history of recognition of CNVs is documented by Beckmann et al (2007): the earliest descriptions of deletions or insertions affecting chunks of DNA 1 kb in length or larger were made in the 1960s and 1970s, but it was a few decades later before it was recognised that this kind of large-scale submicroscopic variation is common and not necessarily pathological. However, where the CNVs are large and/or affect the function of key genes, they are associated with neurodevelopmental disorders, notably intellectual disability or autism spectrum disorder. One study also found an association with severe developmental language disorder (Kalnak et al, 2018).  
+
+Large, disruptive CNVs tend to be relatively rare in populations. However, smaller CNVs are more common, and Simpson et al (2015) found that there was a slight increase in these in cases of developmental language disorder (DLD) and their relatives, compared to a control sample. The fact that unaffected relatives showed the increase as well as affected individuals suggested that an increased burden of CNVs may play a cumulative role in mediating an increased risk of language disorder, but the precise impact may depend on the location and extent of the CNV, and whether it disrupts gene function. The specific combination of inherited events may also be important. 
+
+A CNV-based version of the double-hit hypothesis maintains that the risk of neurodevelopmental disorder associated with a CNV is increased when there is a trisomy, because of interactions between CNVs and the overexpression of genes on the sex chromosomes. This is the first hypothesis we plan to test, and may be regarded as a version of a two-hit model (Veltman & Brunner, 2010),  whereby the effect of a microdeletion is not deterministic, but rather it acts as a risk factor that can to increase the impact of  deletions or duplications elsewhere on the genome. This model was supported by the discovery by Girirajan et al (2010) that individuals with severe neurodevelopmental disorders who had a deletion at the 16p12.1 locus often had a second CNV.  A genomic alteration that may have little or no effect in an unaffected relative appeared to have a particularly detrimental effect in combination with a second 'hit'. 
+
+In this study we also consider the possibility that presence of a sex chromosome trisomy might be associated with an unusually large number of CNVs across the entire genome. According to this hypothesis, the high rate of neurodevelopmental problems could be a direct consequence of an increased CNV burden - perhaps because whatever mechanism leads to a trisomy also disrupts CNV checkpoints. This, then, is our second hypothesis: that there is an increased burden of CNVs in individuals with a sex chromosome trisomy.
+
+The best source of evidence for an increased CNV burden comes from Rocca et al (2016), who presented evidence that men with Klinefelter syndrome (47,XXY) had an unusually high number of X-chromosome CNVs. They compared CNV burden on the X-chromosome in 94 men with Klinefelter (47, XXY) syndrome to that in 85 controls (43 males and 42 females), and reported a higher number of CNVs, especially duplications, in the Klinefelter group. Thirty-nine of them (41.5%) carried CNVs, compared to 12/42, (28.6%) of females, and 8/43, (18.6%) of males. As the authors noted, an increased CNV burden could provide an explanation for the variable phenotype, but they did not test for associations with phenotype in their sample. Their study raises the question of whether an increased rate of CNVs might be seen in other sex chromosome trisomies - XXX and XYY - and whether these might be found on the autosomes as well as the X-chromosome.
+
+Further circumstantial evidence for an impact of CNV burden in cases of sex chromosome trisomy comes from Le Gall et al (2017), who focused on a group of 14 patients with sex chromosome trisomies in whom an additional causative event was suspected because of an unusually severe phenotype involving intellectual disability or other severe developmental disorder. They found seven patients carried a pathogenic CNV (one with Williams-Beuren syndrome, one with 7q11.23 duplication, one with 17q12 duplication, three with 16p11.2 duplication and one with a 15q11.3 deletion), as well as two with a likely pathogenic CNV and five with a variant of uncertain significance. Because their report focused only on cases with a known additional micro-deletion or -duplication, the authors were not, however, able to estimate the prevalence of additional pathogenic CNVs in cases of sex chromosome trisomy, or to show that a CNV was specifically related to the severity of the phenotype.
+
+##Research Questions <i>(required)</i> 
+<i>Please list each research question included in this study.</i>
+
+1.	Is the total size, number or predicted intolerance score of autosomal CNVs associated with greater phenotypic severity in individuals with sex chromosome trisomies compared to a comparison sample of normal karyotype? This would provide evidence of an interaction between autosomal genes and genes on the sex chromosomes 
+
+2.	Are individuals with a sex chromosome trisomy more likely to carry other secondary large CNVs on the autosomes, which may have gone undiagnosed? 
+
+##Hypotheses <i>(required)</i> 
+<i>For each of the research questions listed in the previous section, provide one or multiple specific and testable hypotheses. Please state if the hypotheses are directional or non-directional. If directional, state the direction. A predicted effect is also appropriate here.</i>
+
+We plan to study two groups of children: a) a sample of children with a sex chromosome trisomy (47,XXX, 47,XXY or 47,XYY), identified by prenatal or postnatal screening, or via support groups; b) a comparison sample of twin children that includes a high proportion of cases with evidence of language or literacy difficulties. Both groups have undergone the same battery of language and cognitive assessments, and have had a genome-wide SNP array performed on their DNA sample. 
+
+We will test two contrasting hypotheses, both of which link language and neurodevelopmental problems in SCTs to CNVs: 
+
+1.	Double-hit model: SCT cases will carry a similar number, size and predicted intolerance scores of secondary CNVs as the comparison group, but these will correlate with phenotypic severity more than in the comparison group. The overall burden of secondary CNVs will predict language impairment in both comparison and SCT samples, but the regression line will have a steeper slope in the SCT group (Figure 1 A). 
+
+2. Increased burden model:	SCT cases are more likely to carry a secondary pathogenic or likely pathogenic CNV that may contribute to their phenotype, compared to the comparison group (Figure 1 B).
+
+As shown in Figure 1, in model A, the comparison and SCT groups do not differ in CNV burden (x-axis), but they differ in the slope of the regression linking CNV burden to phenotype. In model B, the SCT group has a greater burden of CNVs, which is sufficient to account for the more severe phenotype in this group, without needing to postulate any difference between groups in the function linking CNV burden to phenotype. Both hypotheses are directional, and they are not mutually exclusive. 
+
+Figure 1: Schematic of predicted relationships between genotype and phenotype 
+```{r Fig1, echo=TRUE}
+#Aim is to depict contrast between Double Hit model and Increased CNV burden model for sex chromosome trisomies.
+#Simulate distribution of CNVs for both models, with probabilistic rule linking CNV size to presence of phenotype
+#Currently 10 binary phenotypes which are summed with added error to give continuous score.
+
+#NB CNV size currently modeled as normally distributed; would be better if modelled to 
+#reflect fact that the freq goes down with size, as discussed here:
+# Conrad et al: 2006 Nature genetics  38(1):75-81.: A high-resolution survey of deletion polymorphism in the human genome.
+
+#See also this review: by Zhang et al: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4472309/
+#Database where structural variation is cataloged (the Database of Genomic Variants or DGV,
+#http://projects.tcag.ca/variation/).
+
+#Define some variables to be simulated
+myvars<-c('sct','sizecnvA','sizecnvB','phenoA1','phenoA2','phenoA3','phenoA4','phenoA5',
+          'phenoA6','phenoA7','phenoA8','phenoA9','phenoA10',
+          'phenoAsum','phenoB1','phenoB2','phenoB3','phenoB4','phenoB5',
+          'phenoB6','phenoB7','phenoB8','phenoB9','phenoB10','phenoBsum')
+
+#set up dataframe to save simulation results
+ncases<-120 #number of cases each for sct and control (roughly correct, though more controls in practice)
+mydata<-data.frame(matrix(NA,nrow=ncases*2,ncol=length(myvars)))
+colnames(mydata)<-myvars
+range1<-1:ncases
+range2<-(ncases+1):(ncases*2)
+mydata[range1,1]<-0
+mydata[range2,1]<-1 #half control and half with trisomy
+mymean<-0; mysd<-1; #mean and SD for size of cnv - arbitrary
+mydata[,2]<-rnorm(ncases*2) #random number ZSCORE represents size cnv
+#model B - higher rate of cnv in trisomy cf control - add .8 sd to cnv size
+mydata[range1,3]<-mydata[range1,2]
+mydata[range2,3]<-mydata[range2,2]+mysd*.8
+
+#model A: same rate of CNV but bigger effect with SCT - Double Hit
+#relation between sizecnv and neurodev is probabilistic; use lower cutoff for disorder for sct
+
+  pvect<-pnorm(mydata$sizecnvA) #sizecnvA at this point is a zscore, so can just convert to pvalue
+  for (i in 1:10){ #phenotypes model A (have 10, each independently determined)
+    rvect<-runif(ncases) #random number from 0 to 1
+    dvect<-pvect-rvect #if pvect value is high, then v likely to be +ve and vice versa
+    mydata[,(i+3)]<-0 #whether or not phenotype present for this variable
+    mycutoff<-.7 #the higher this value, the lower the correl between cnv/pheno
+    w<-which(dvect>mycutoff) #if dvect is above cutoff phenotype present
+    mydata[w,(i+3)]<-1
+    sctcutoff<-.3 #can try changing this and mycutoff to see how relationship affected
+    w<-which(dvect[range2]> sctcutoff) #different cutoff for sct cases
+    mydata[(w+ncases),(i+3)]<-1 #nb add ncases, because reference is just to part of vector in formula
+  }
+  mydata$phenoAsum<-rowSums(mydata[,4:13])+rnorm(ncases)+3 #rnorm + 3 adds random error
+
+#add 3 to the cnv variables, so they could plausibly be Mb (ie megabase units, million base pairs)
+mydata[,2:3]  <-(3+mydata[,2:3])/3-.3
+
+
+#png(filename = "CNV_models.png", width = 500, height = 300)#uncomment to create png file
+par(mfrow=c(1,2))
+  
+plot(mydata$sizecnvA,mydata$phenoAsum,col=(mydata$sct+1),
+     xlab='CNV burden (arbitrary units)',ylab='Phenotype severity',main='A. Double Hit model',
+     ylim=c(0,15),xlim=c(0,2))
+legend(-.05, 15, legend=c("Comparison", "SCT"),
+       col=c("black", "red"), pch=1,cex=0.75)
+
+conphenomean<-mean(mydata$phenoAsum[range1])
+sctphenomean<-mean(mydata$phenoAsum[range2])
+abline(h=conphenomean, col='black')
+abline(h=sctphenomean, col='red')
+concnvmeana<-mean(mydata$sizecnvA[range1])
+sctcnvmeana<-mean(mydata$sizecnvA[range2])
+abline(v=concnvmeana, col='black')
+abline(v=sctcnvmeana, col='red')
+
+
+#model B: higher rate of CNV but same effect with SCT - added burden model
+#otherwise identical : relation between sizecnv and neurodev is probabilistic; use lower cutoff for disorder for sct
+
+pvect<-pnorm(mydata$sizecnvB)
+for (i in 1:10){ #phenotypes model B
+  rvect<-runif(ncases)
+  dvect<-pvect-rvect
+  mydata[,(i+14)]<-0
+  w<-which(dvect>mycutoff)
+  mydata[w,(i+14)]<-1
+}
+mydata$phenoBsum<-rowSums(mydata[,15:24])+rnorm(ncases)+3
+
+
+plot(mydata$sizecnvB,mydata$phenoBsum,col=(mydata$sct+1),pch=1,
+     xlab='CNV burden (arbitrary units)',ylab='Phenotype severity',
+     main='B. Increased CNV Burden model', ylim=c(0,15),xlim=c(0,2))
+legend(-.05, 15, legend=c("Comparison", "SCT"),
+       col=c("black", "red"), pch=1,cex=0.75)
+conphenomean<-mean(mydata$phenoBsum[range1])
+sctphenomean<-mean(mydata$phenoBsum[range2])
+abline(h=conphenomean, col='black')
+abline(h=sctphenomean, col='red')
+concnvmeanb<-mean(mydata$sizecnvB[range1])
+sctcnvmeanb<-mean(mydata$sizecnvB[range2])
+abline(v=concnvmeanb, col='black')
+abline(v=sctcnvmeanb, col='red')
+#dev.off() #uncomment this if printing to png file
+
+```
+##Explanation of existing data <i>(required) </i>
+<i>If you indicate that you will be using some data that already exist in this study, please describe the steps you have taken to assure that you are unaware of any patterns or summary statistics in the data. This may include an explanation of how access to the data has been limited, who has observed the data, or how you have avoided observing any analysis of the specific data you will use in your study. The purpose of this question is to assure that the line between confirmatory and exploratory analysis is clear.</i>
+
+Both the participant phenotyping and genome-wide SNP array data were generated for the companion study preregistered by Newbury et al (2018). 
+
+Data on language phenotypes is kept separately from data from CNV analysis and will not be linked until the protocol has been pre-registered. It is not possible to test either of the hypotheses without this information, as both involve predictions about relationships between genotype and phenotype. 
+
+Access to phenotypic data is restricted to Professor Bishop and has not been made available to the genetics team. For our previous study by Newbury et al (2018), we have linked the phenotypic data to results from 47 specific single-nucleotide polymorphisms from two candidate genes. This level of genetic data does not provide information about the CNVs that are the focus of the current study.
+
+The CNV analysis starts from raw data in the form of genome-wide SNP arrays generated by the Newbury et al (2018) study, which is in the form of a Genome Studio (Illumina) project file (.bsc). This contains the genotype calls, signal ratios and minor allele frequency data for 500 participants across 600,000 genome wide SNP markers. High quality calling of copy number variants (CNVs) is being performed by Dr Hayley Mountford using software packages outside of Genome Studio. Results of her analysis will not be made available to Prof Bishop's team until after this protocol is preregistered.
+
+##Data collection procedures <i>(required)</i> 
+Please describe the process by which you will collect your data. If you are using human subjects, this should include the population from which you obtain subjects, recruitment efforts, payment for participation, how subjects will be selected for eligibility from the initial pool (e.g. inclusion and exclusion rules), and your study timeline. For studies that don't include human subjects, include information about how you will collect samples, duration of data gathering efforts, source or location of samples, or batch numbers you will use.
+
+###SCT Group Recruitment
+SCT cases aged from 5 to 16 years were recruited through re-contacting participants from a previous study (Bishop et al, 2011) who had agreed to be re-contacted. Additional participants were recruited via support groups (Unique: the Rare Chromosome Support Group, and the Klinefelter Syndrome Association), National Health Service Clinical Genetics Centres, and self-referred through the research project Facebook page or website. In order to be eligible for the study, SCT group participants had to have a genetic diagnosis of either XXX, XXY or XYY, and be fully aware of their genetic status. 
+
+Figure 2 shows the numbers of children with sex chromosome trisomies in relation to the type of trisomy and the reason for diagnosis. We distinguish here between those diagnosed in the course of investigations for neurodevelopmental disorder and the remainder; only the latter group can be used to estimate whether the CNV burden is unduly high in those with a sex chromosome trisomy, because their diagnosis was independent of neurodevelopmental status. However, both groups combined can be used to test predictions about genotype/phenotype associations.
+
+![Figure 2. <i>N children with each type of trisomy, divided according to whether diagnosis was made when investigating neurodevelopmental disorder.</i>](fig2_2018_02_06_fromWOR.png)
+
+###Twin Comparison Group Recruitment
+Twins in the comparison group had been recruited for a study of language and laterality (Wilson and Bishop, 2018) and had undergone the same test battery as the SCT group. Twins were recruited via information sheets sent to state schools, and also via the research project Facebook page. In this sample, we aimed to recruit a sample where around 75% pairs would include at least twin with developmental language disorder (DLD). This was achieved by selecting cases for inclusion on the basis of parental response on a telephone interview: any mention of language delay, history of speech and language therapy, current language problems or dyslexia was coded as 'parental concern'. 
+
+A flowchart showing the numbers of twins with specific characteristics is shown in Figure 3.
+
+![Figure 3. <i>Flowchart showing characteristics of children recruited to comparison groups. Information about zygosity, gender and parental concern is shown for information, but was not used in the analysis. Because twins are not independent, the final sample was divided into two subgroups of 184 and 186 children respectively, each containing one member from each pair, selected at random. (Ns not equal because some twins had missing DNA from just one member of the pair). (From Newbury et al, 2018).</i>](fig3_2018_02_06_fromWOR.png)
+
+###Test battery
+The test battery is described in full by Newbury et al (2018). It was designed to provide a quantitative estimate of language, literacy and communication ability in children aged 5 to 16 years. In addition, parents completed a telephone interview, and were invited to complete two questionnaires and an online diagnostic interview.
+
+###Genetic Data 
+DNA was collected and extracted from saliva samples (OG-500, DNA Genotek) using the manufacturer recommended protocol. DNA, but not phenotypic data, was collected from the parents of the participants where possible, and they were included on the genotyping array to assist with the confirmation of inheritance of patterns. 
+
+Samples were genotyped using the genome-wide SNP array Infinium Global Screening Array-24(v1) targeting 692,824 common and rare SNPs suitable for both genotyping and CNV analysis. SNP array data were called using Illumina GenomeStudio v.2.03. Individual SNPs with a GenTrain (quality) score of <0.5 and sample with <0.9 of SNPs called were excluded. 
+
+##Sample size (required) 
+As shown in Figure 2, the SCT group consisteed of 42 girls with 47,XXX, 43 boys with 47,XXY, and 45 boys with 47,XYY combined into a group of 130 children with a sex chromosome trisomy. 
+As shown in Figure 3, twins in the comparison group came from 194 twin pairs, with DNA samples available for 370/388 (95%) of cases.
+
+Genotyping data also includes 215 samples from first degree relatives of participants to enable phasing of CNVs if required. 
+
+All available data from genotyping will undergo CNV analysis in the current study. [<i>Hayley: does that include the parents?</i>]
+
+##Sample size rationale (required) 
+Our study is constrained by the numbers we were able to recruit, with further loss of cases which did not pass genotyping quality control. We had originally planned the study to detect an association between specific SNPs and language outcomes in children with SCTs. The power to detect given effect sizes in the current study is discussed below.
+
+##Stopping rule (required) 
+Not applicable as data has already been obtained.
+
+##Manipulated variables (required) 
+Not applicable
+
+##Measured variables (required) 
+<i>Describe each variable that you will measure. This will include outcome measures, as well as any predictors or covariates that you will measure. You do not need to include any variables that you plan on collecting if they are not going to be included in the confirmatory analyses of this study.</i>
+###Phenotypic measures
+<u>Language and cognitive tests</u>. Verbal comprehension was assessed using the Woodcock Johnson III Tests of Cognitive Abilities (Woodcock et al 2007).  Nonword repetition, oromotor sequencing and sentence repetition were tested using the NEPSY: A Developmental Neuropsychological Assessment tool (Korkman et al 1998). Phonological ability was assessed using the Phonological Assessment Battery (PhAB) (Frederickson, Frith and Reason, 1997), and word reading efficiency using the Test of Word Reading Efficiency (TOWRE) (Torgesen, Wagner and Rashotte, 1999). Reading accuracy, rate and comprehension were tested using the Neale Analysis of Reading Ability (2nd British Edition) (Neale, 1997) and the child's general communication composite using the Children's Communication Checklist-2 (CCC-2) (Bishop, 2003). Nonverbal ability was estimated using the two nonverbal subtests of the WASI (Block Design and Matrices); age-normed scores on these were converted into an overall Performance IQ score. The remaining tests of the battery were used to index language and literacy abilities. All measures involved individual assessment by a trained examiner, except for the CCC-2, which is a parental report instrument.
+
+<u>Psychiatric evaluation</u>. In an initial telephone interview, parents were asked about the child's medical and educational history, including a question about whether anyone had diagnosed the child with a neurodevelopmental disorder such as ASD, developmental language disorder (DLD) or specific language impairment, dyslexia or dyspraxia. In addition, one or both parents were asked to complete the online Development and Wellbeing Assessment (DAWBA) (Goodman et al., 2000) in their own time. 84 parents of SCT cases and 133 parents of twins complied with this request. The DAWBA gives information on likelihood of the child meeting criteria for a range of psychiatric diagnoses; a final diagnosis is made by a trained rater who assimilates all the information and evaluates it against DSM5 criteria (American Psychiatric Association, 2013).
+
+##Genetic measures
+Genotypes have been previously called (Newbury et al 2018) using Genome Studio (Illumina), and beta allele frequencies and log 2 ratio for each of the 600,000 SNPs exported to a .csv file. CNV calling will be performed using two separate methods; PennCNV (Wang et al 2007), a HMM based method written in Perl, and QuantiSNP (Colella et al 2007) written in Matlab. CNVs will be considered high confidence when they overlap by at least 50% between the two methods. CNV regions will be annotated for gene names using Annovar (Wang and Hakonarson, 2010). Individual totals of CNV number, size and pLi score will be calculated using R. 
+
+The CNV analysis will test for the number of CNVs, total genetic region covered by CNVs (Mbp) and a sum of the predicted likelihood of intolerance scores for each of the SCT and comparison group individuals. Individual large and pathogenic CNVs will be identified separately as these may be of clinical significance.  
+
+##Indices (required) 
+<i>If any measurements are going to be combined into an index (or even a mean), what measures will you use and how will they be combined? Include either a formula or a precise description of your method. If you are using a more complicated statistical method to combine measures (e.g. a factor analysis), you can note that here but describe the exact method in the analysis plan section.</i>
+
+Our focus will be on one of the phenotypic measures used by Newbury et al (2018), the global index of neurodevelopmental difficulties, as CNVs have previously been associated most strongly with severe problems affecting behaviour, which are not indexed by the other two measures (nonword repetition and overall language ability). The global index is an ad hoc measure that combines all available information about a range of neurodevelopmental disorders affecting language, attention, social communication and overall functioning.
+<span style="color:red"> *Need more detail on the scale here*</span>
+
+
+Three measures of CNV burden will be used: 
+A)	Mean of number of CNVs per group
+B)	Mean of total CNV size per group
+C)	Mean of sum of pLi scores from each CNV in each individual, and compared per group
+
+##Study design (required) 
+Describe your study design. Examples include two-group, factorial, randomized block, and repeated measures. Is it a between (unpaired), within-subject (paired), or mixed design? Describe any counterbalancing required. Typical study designs for observation studies include cohort, cross sectional, and case-control studies. 
+
+This study adopts an observational design comparing cases (children with SCTs) and a comparison group (twins with normal karyotype).
+
+##Randomization (required) 
+<i>If you are doing a randomized study, how will you randomize, and at what level? </i>
+
+The only role of randomisation in this study is the division of the twin comparison group into two subgroups. This has been done by selecting one twin from each pair at random. In effect, these two subsamples can be treated as replication samples, though it should be noted they are not independent, because of genetic relatedness.
+
+
+###Statistical models (required) 
+<i>What statistical model will you use to test each hypothesis? Please include the type of model (e.g. ANOVA, multiple regression, SEM, etc) and the specification of the model (this includes each variable that will be included as predictors, outcomes, or covariates). Please specify any interactions that will be tested and remember that any test not included here must be noted as an exploratory test in your final article.</i>
+
+The 'increased CNV burden' model can be simply tested by comparing the SCT group with the two comparison groups in terms of the CNV burden, as indexed by the three measures. Because these measures are intecorrelated, Bonferroni correction for the number of comparisons would be overly conservative, and so we will use permutation testing to evaluate the probability of any increase seen in the SCT group.
+
+The 'double hit' model will be tested using a regression approach, as the prediction is for an interaction, i.e. a stronger association between CNV burden and phenotype in the SCT group relative to the comparison group. Any association in the comparison group is expected to be weak or negligible, in line with previous studies of CNV burden in children with language disorders. 
+
+##Transformations (required) 
+CNV burden scores will be censored to avoid a few extreme values (see draft script)
+
+##Follow-up analyses (required) 
+<i>If not specified previously, will you be conducting any confirmatory analyses to follow up on effects in your statistical model, such as subgroup analyses, pairwise or complex contrasts, or follow-up tests from interactions? Remember that any analyses not specified in this research plan must be noted as exploratory.</i>
+
+Where a pathogenic or likely pathogenic CNV is detected in a participant, it will be phased using parental genotypes where available. 
+
+
+
+##Inference criteria (required) 
+<i>What criteria will you use to make inferences? Please describe the information you'll use (e.g. specify the p-values, Bayes factors, specific model fit indices), as well as cut-off criterion, where appropriate. Will you be using one or two tailed tests for each of your analyses? If you are comparing multiple conditions or testing multiple hypotheses, will you account for this? </i?>
+
+Because we have directional predictions, we will use one-tailed statistical tests with alpha set to .05. As noted above, we will use permutation testing to adjust for multiple comparisons.
+
+
+##Data exclusion (required) 
+<i>How will you determine which data points or samples (if any) to exclude from your analyses? How will outliers be handled?</i>
+
+Poor quality genetic data will be excluded from the analysis at a cut off of <0.5 GenTrain score for SNPs and <0.9 SNP data per individual. As high quality data is key to achieving accurate CNV calls, any low quality or poorly performing samples will be removed from the analysis. This is identified by quality scores, but also excessive CNV calls or excessive heterozygosity levels. 
+Only high confidence CNVs which overlap by at least 50% between the two detection algorithms will be considered in the analysis, therefore those that do not meet this bench mark will be excluded. 
+
+##Missing data (required) 
+<i>How will you deal with incomplete or missing data?</i>
+
+For phenotypic analysis, the global neurodevelopmental index uses all available data: thus if the DAWBA (online interview) was not completed, reliance is placed on report from parental interview, but where DAWBA is available, that information is incorporated in the index. With this approach, phenotypic scores are available for all cases. 
+
+Regarding the genetic analysis, no data is missing from the study; however individuals may have data missing from some SNPs on the array. This is not a problem for downstream analyses, and these are coded as missing by Genome Studio. Individual with more than 10% SNP calls missing have been excluded, and individual SNPs were excluded if they were missing more than 5% of calls.  
+
+##Exploratory analysis (optional) 
+<i>If you plan to explore your data set to look for unexpected differences or relationships, you may describe those tests here. An exploratory test is any test where a prediction is not made up front, or there are multiple possible tests that you are going to use. A statistically significant finding in an exploratory test is a great way to form a new confirmatory hypothesis, which could be registered at a later time.</i>
+
+It is possible that we will identify a few large, potentially damaging CNVs that may be contributing to an individual's neurodevelopmental disorder. If detected, it is possible that any identified CNVs may help to explain the phenotype seen in a child. CNVs will be checked to see if they have been previously reported in the online databases (ClinVar, Decipher), and CNVs will be annotated in line with current American College of Medical Genetics (ACMG) guidelines (Kearney et al 2011; South et al 2013; Nowakowska 2017). As findings may be of clinical relevance to both the child and their families, findings deemed pathogenic or likely pathogenic will be reported to the local clinical geneticist. Parental genetic data, where available, may be used to verify the inheritance mechanism and therefore potential for pathogenicity.
+
+Genes covered by high confidence CNVs will be analysed using the gene ontology analysis package WebGestalt40 (Wang, Duncan et al 2013) to identify common molecular pathways. This pathway analysis may identify potential mechanisms that underlie the high levels of language disorder seen in children with an sex chromosome trisomy.  
+
+## Script
+
+We will have data on two groups, as specified in previous paper on double hit hypothesis by Newbury et al (2018). One group are children with sex chromosome trisomies (SCTs), and the comparison group is twins, oversampled for children with language problems. To retain independence of observations, the twins are subdivided at random into two subsets, with one member of each pair.
+
+<span style="color:red">Questions for the analysis of CNVs are:
+
+1. How to quantify CNV burden?
+2. How to specify models for group comparisons?
+3. Determining power to test models, given we have a fixed sample size
+</span>
+
+To anticipate how to handle the data, we will use an existing CNV dataset from a sample from the SLI Consortium, previously reported by Simpson et al (2015). This is SLIC_df.txt.
+
+First we upload the data and apply censoring to recode extreme values.
+
+```{r readdata, echo=FALSE}
+##############################################################################
+#Using test_script_cnv.R developed by Paul Thompson
+CNV_dat<-read.table('SLIC_df.txt',header=TRUE,stringsAsFactors=FALSE)
+#Function borrowed and adapted from the 'scales' package. This applies the censoring to the two potentially interesting variables.
+#str(CNV_dat) #uncomment to inspect variables
+censor_PT<-function (x, limit = 7, only.finite = TRUE) 
+{
+  force(range)
+  finite <- if (only.finite) 
+    is.finite(x)
+  else TRUE
+  x[finite & x > limit] <- limit+1
+  x
+}
+
+CNV_dat$sum_pLi_C<-censor_PT(CNV_dat$sum_pLi,limit=7,only.finite = F)
+#CNV_dat$total_Kbp_C<-censor_PT(CNV_dat$total_Kbp,limit=3000,only.finite = F)
+plot(CNV_dat$sum_pLi,CNV_dat$sum_pLi_C) #show effect of censoring
+hist(CNV_dat$sum_pLi_C) #NB still v skewed
+#-----------------------------------------------------------------------------#
+```
+Scatterplots with marginal histograms show how the different measures of CNVs are related.
+
+```{r visualise.dists, echo=FALSE}
+#-----------------------------------------------------------------------------#
+
+# Scatter plot with marginal histograms 
+
+p1 <- ggplot(CNV_dat,aes(x=sum_pLi_C,y=total_Kbp,colour=factor(Group))) + geom_point() +
+  scale_x_continuous(expand=c(0.02,0)) +
+  scale_y_continuous(expand=c(0.02,0)) +
+  theme_bw() +
+  theme(legend.position="none",plot.margin=unit(c(0,0,0,0),"points"))
+
+theme0 <- function(...) theme( legend.position = "none",
+                               panel.background = element_blank(),
+                               panel.grid.major = element_blank(),
+                               panel.grid.minor = element_blank(),
+                               panel.margin = unit(0,"null"),
+                               axis.ticks = element_blank(),
+                               axis.text.x = element_blank(),
+                               axis.text.y = element_blank(),
+                               axis.title.x = element_blank(),
+                               axis.title.y = element_blank(),
+                               axis.ticks.length = unit(0,"null"),
+                               axis.ticks.margin = unit(0,"null"),
+                               panel.border=element_rect(color=NA),...)
+
+p2 <- ggplot(CNV_dat,aes(x=sum_pLi_C,colour=factor(Group),fill=factor(Group))) + 
+  geom_density(alpha=0.5) + 
+  scale_x_continuous(breaks=NULL,expand=c(0.02,0)) +
+  scale_y_continuous(breaks=NULL,expand=c(0.00,0)) +
+  theme_bw() +
+  theme0(plot.margin = unit(c(1,0,-0.48,2.2),"lines")) 
+
+p3 <- ggplot(CNV_dat,aes(x=total_Kbp,colour=factor(Group),fill=factor(Group))) + 
+  geom_density(alpha=0.5) + 
+  coord_flip()  + 
+  scale_x_continuous(labels = NULL,breaks=NULL,expand=c(0.02,0)) +
+  scale_y_continuous(labels = NULL,breaks=NULL,expand=c(0.00,0)) +
+  theme_bw() +
+  theme0(plot.margin = unit(c(0,1,1.2,-0.48),"lines"))
+
+#mylegend<-g_legend(p1)  #This throws error, even after installing lemon
+
+grid.arrange(arrangeGrob(p2,ncol=2,widths=c(3,1)),
+             arrangeGrob(p1,p3,ncol=2,widths=c(3,1)),
+             heights=c(1,3))
+
+##############################################################################
+```
+This dataset has a group variable indicating source of sample: SLIC (includes affected and unaffected relatives) and controls. We see how the difference CNV burden indicators compare. We see that in this sample, the total kBP measure gives a significant group difference.
+
+```{r comparegp,echo=FALSE}
+##############################################################################
+
+#Multiple testing: Wilcoxon sum rank test with Bonferroni correction.
+mycor <- rcorr(as.matrix(cbind(CNV_dat$total_cnvs,CNV_dat$total_Kbp,CNV_dat$sum_pLi_C)),type='pearson')
+rtab<-round(mycor$r,3)
+colnames(rtab) <- c('1.total_cnv','2.total_Kbp','3.sum_pLi')
+
+rtab
+
+BF_correct_alpha<-0.05/3
+print('Total CNVs')
+w1<-wilcox.test(total_cnvs~Group,data=CNV_dat,conf.int=TRUE)
+print(list(p.value=w1$p.value,corrected.alpha=BF_correct_alpha,res=w1$p.value<=BF_correct_alpha))
+print('Total Kbp')
+w2<-wilcox.test(total_Kbp~Group,data=CNV_dat,conf.int=TRUE)
+print(list(p.value=w2$p.value,corrected.alpha=BF_correct_alpha,res=w2$p.value<=BF_correct_alpha))
+print('sum pLi')
+w3<-wilcox.test(sum_pLi_C~Group,data=CNV_dat,conf.int=TRUE)
+print(list(p.value=w3$p.value,corrected.alpha=BF_correct_alpha,res=w3$p.value<=BF_correct_alpha))
+
+#-----------------------------------------------------------------------------#
+
+
+```
+##Phenotype analysis
+We have three possible phenotypes that were used by Newbury et al (2018). We decide a priori that the measure of global neurodevelopmental impairment is optimal, because prior research on CNVs implicates more severe conditions such as ASD and intellectual disability, which are captured by this measure. We do not have this measure for the SLIC cohort, so just simulate some to test analyses.
+
+```{r simulatepheno,echo=FALSE}
+#simulate some pheno data with distribution similar to general neurodev measure
+#NB freqs guessed at present - need to check these
+CNV_dat$pheno<-rnorm(nrow(CNV_dat))#start with normal dist
+#add .5 to SLIC cohort - NB not v realistic: ignores difference between affected/unaffected
+w <- which(CNV_dat$Group=='SLIC')
+CNV_dat$pheno[w]<-CNV_dat$pheno+.5
+cutlist<-c(0,15,40,60,70,80,84,90,95,100)/100 #cumulated percentage cutoffs for scores 0:8
+CNV_dat$pvalue<-pnorm(CNV_dat$pheno)
+CNV_dat$phenord<- cut(CNV_dat$pvalue, breaks = c(cutlist), labels = c(1:9)) 
+CNV_dat$phenord <- as.numeric(CNV_dat$phenord)
+table(CNV_dat$phenord,CNV_dat$Group)
+```
+##Poisson regression
+Poisson regression is the optimal method, as the dependent variable is a count. This will naturally allow for the lower bound of zero.
+
+Reference for analysis: https://stats.idre.ucla.edu/r/dae/poisson-regression/
+```{r poisson, echo=FALSE}
+#-----------------------------------------------------------------------------#
+
+
+
+summary(m1 <- glm(phenord ~ sum_pLi_C + Group, family="poisson", data=CNV_dat))
+
+#-----------------------------------------------------------------------------#
+#check the assumption that mean and variance ar roughly equal. If not, we can use robust estimates. I think thi will make little difference in our case but included for completeness.
+
+cov.m1 <- vcovHC(m1, type="HC0")
+std.err <- sqrt(diag(cov.m1))
+r.est <- cbind(Estimate= coef(m1), "Robust SE" = std.err,
+               "Pr(>|z|)" = 2 * pnorm(abs(coef(m1)/std.err), lower.tail=FALSE),
+               LL = coef(m1) - 1.96 * std.err,
+               UL = coef(m1) + 1.96 * std.err)
+
+r.est
+
+#test the effect of dropping group. We hope that this is significant!
+m2 <- update(m1, . ~ . - Group)
+## test model differences with chi square test
+anova(m2, m1, test="Chisq")
+
+#-----------------------------------------------------------------------------#
+```
+
+
+## References
+
+Beckmann, J. S., Estivill, X., & Antonarakis, S. E. (2007). Copy number variants and genetic traits: closer to the resolution of phenotypic to genotypic variability. Nature Reviews Genetics, 8(8), 639-646. 
+
+Bishop, D. V. M., Jacobs, P. A., Lachlan, K., Wellesley, D., Barnicoat, A., Boyd, P. A., . . . Scerif, G. (2011). Autism, language and communication in children with sex chromosome trisomies. Archives of Disease in Childhood, 96, 954-959. doi:doi:10.1136/adc.2009.179747 
+
+Girirajan, S., Rosenfeld, J. A., Cooper, G. M., Antonacci, F., Siswara, P., Itsara, A., . . . Eichler, E. E. (2010). A recurrent 16p12.1 microdeletion supports a two-hit model for severe developmental delay. Nature Genetics, 42, 203-209. doi:10.1038/ng.534
+
+Kalnak, N., Stamouli, S., Peyrard-Janvid, M., Rabkina, I., Becker, M., Klingberg, T., . . . Tammimies, K. (2018, in press). Enrichment of rare Copy Number Variation in children with Developmental Language Disorder. Clinical Genetics. 
+
+Le Gall, J., Nizon, M., Pichon, O., Andrieux, J., Audebert-Bellanger, S., Baron, S., . . . Isidor, B. (2017). Sex chromosome aneuploidies and copy-number variants: a further explanation for neurodevelopmental prognosis variability? European Journal of Human Genetics, 25(8), 930-934. doi:10.1038/ejhg.2017.93
+
+Newbury, D. F., Simpson, N. H., Thompson, P. A., & Bishop, D. V. M. (2018). Stage 1 Registered Report: Variation in neurodevelopmental outcomes in children with sex chromosome trisomies: protocol for a test of the double hit hypothesis. Wellcome Open Research. 
+
+Rocca, M. S., Pecile, V., Cleva, L., Speltra, E., Selice, R., Di Mambro, A., . . . Ferlin, A. (2016). The Klinefelter syndrome is associated with high recurrence of copy number variations on the X chromosome with a potential role in the clinical phenotype. Andrology, 4(2), 328-334. doi:10.1111/andr.12146
+
+Simpson, N. H., Ceroni, F., Reader, R. H., Covill, L. E., Knight, J. C., Hennessy, E. R., . . . Consortium, S. L. I. (2015). Genome-wide analysis identifies a role for common copy number variants in specific language impairment. European Journal of Human Genetics, 23(10), 1370-1377. doi:10.1038/ejhg.2014.296
+
+Veltman, J. A., & Brunner, H. G. (2010). Understanding variable expressivity in microdeletion syndromes. Nature Genetics, 42, 192-193. doi:10.1038/ng0310-192
+
+Wilson, A. C., & Bishop, D. V. M. (2018). Resounding failure to replicate links between developmental language disorder and cerebral lateralisation. PeerJ, 6, e4217. doi:10.7717/peerj.4217
+
