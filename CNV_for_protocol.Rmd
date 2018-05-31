@@ -28,19 +28,19 @@ require(MASS)
 
 ##Background
 
-Children who carry an extra X or Y chromosome do not have any gross physical or mental abnormalities however there is a pronounced increase in the risk of language impairment and autistic features (Bishop, Jacobs, et al 2011). The rationale for this project is that investigation of the genetic correlates of language and communication variations in children with sex chromosome trisomies (SCT) may lead to improved understanding of common neurodevelopmental disorders in children with a typical karyotype. 
+Children who carry an extra X or Y chromosome do not have any gross physical or mental abnormalities; however, there is a pronounced increase in the risk of language impairment and autistic features (Bishop et al, 2011). Investigation of the genetic correlates of language and communication variations in children with sex chromosome trisomies (SCT) may help understand the phenotypic variation seen in affected individuals, and also lead to improved understanding of common neurodevelopmental disorders in children with a typical karyotype. 
 
-A notable feature of sex chromosome trisomies is the variability of the phenotype, which can range from severe, to minor educational difficulties at most. A range of explanations for this phenotypic variability have been proposed. In a companion paper, Newbury et al (2018) considered the 'double hit' hypothesis, which maintains that the presence of an extra dose of neuroligin associated with overexpression of NLGN4 on X and Y chromosomes could amplify the impact of genetic variants that normally create only a minor risk for neurodevelopmental abnormalities. 
+A notable feature of sex chromosome trisomies is the variability of the phenotype, which can range from severe, to minor educational difficulties at most. A range of explanations for this phenotypic variability have been proposed. In a companion paper, Newbury et al (2018) considered the 'double hit' hypothesis, which maintains that the presence of an extra dose of neuroligin associated with overexpression of NLGN4 on X and Y chromosomes could amplify the impact of genetic variants that normally create only a minor risk for neurodevelopmental abnormalities. We did not, however, find any support for that hypothesis from investigation of common variants in two candidate genes.
 
-In the current paper, we consider another way in which an extra sex chromosome could amplify genetic risk, by interacting with copy number variants (CNVs).  The history of recognition of CNVs is documented by Beckmann et al (2007): the earliest descriptions of deletions or insertions affecting chunks of DNA 1 kb in length or larger were made in the 1960s and 1970s, but it was a few decades later before it was recognised that this kind of large-scale submicroscopic variation is common and not necessarily pathological. However, where the CNVs are large and/or affect the function of key genes, they are associated with neurodevelopmental disorders, notably intellectual disability or autism spectrum disorder. One study also found an association with severe developmental language disorder (Kalnak et al, 2018).  
+In the current paper, we consider another way in which an extra sex chromosome could amplify genetic risk, by interacting with copy number variants (CNVs).  The history of recognition of CNVs is documented by Beckmann et al (2007): these are deletions or insertions affecting chunks of DNA 1 kb in length or larger, which were first described in the 1960s and 1970s. It was a few decades later before it was recognised that this kind of large-scale submicroscopic variation is common and not necessarily pathological. However, where CNVs are large and/or affect the function of key genes, they are likely to be associated with neurodevelopmental disorders, notably intellectual disability or autism spectrum disorder. One study also found an association with severe developmental language disorder (DLD) (Kalnak et al, 2018).  
 
-Large, disruptive CNVs tend to be relatively rare in populations. However, smaller CNVs are more common, and Simpson et al (2015) found that there was a slight increase in these in cases of developmental language disorder (DLD) and their relatives, compared to a control sample. The fact that unaffected relatives showed the increase as well as affected individuals suggested that an increased burden of CNVs may play a cumulative role in mediating an increased risk of language disorder, but the precise impact may depend on the location and extent of the CNV, and whether it disrupts gene function. The specific combination of inherited events may also be important. 
+Large, disruptive CNVs tend to be relatively rare in populations. However, smaller CNVs are more common, and Simpson et al (2015) found that there was a slight increase in these in cases of DLD and their relatives, compared to a control sample. The fact that unaffected relatives showed the increase as well as affected individuals suggested that an increased burden of CNVs may play a cumulative role in mediating an increased risk of language disorder, but the precise impact may depend on the location and extent of the CNV, and whether it disrupts gene function. The specific combination of inherited events may also be important. 
 
-A CNV-based version of the double-hit hypothesis maintains that the risk of neurodevelopmental disorder associated with a CNV is increased when there is a trisomy, because of interactions between CNVs and the overexpression of genes on the sex chromosomes. This is the first hypothesis we plan to test, and may be regarded as a version of a two-hit model (Veltman & Brunner, 2010),  whereby the effect of a microdeletion is not deterministic, but rather it acts as a risk factor that can to increase the impact of  deletions or duplications elsewhere on the genome. This model was supported by the discovery by Girirajan et al (2010) that individuals with severe neurodevelopmental disorders who had a deletion at the 16p12.1 locus often had a second CNV.  A genomic alteration that may have little or no effect in an unaffected relative appeared to have a particularly detrimental effect in combination with a second 'hit'. 
+A CNV-based version of the double-hit hypothesis predicts that the risk of neurodevelopmental disorder associated with a CNV will be increased when there is a trisomy, because of interactions between CNVs and the overexpression of genes on the sex chromosomes. This is the first hypothesis we plan to test, and relates to the idea of a two-hit model (Veltman & Brunner, 2010), whereby the effect of a microdeletion is not deterministic, but rather acts as a risk factor that can increase the impact of  deletions or duplications elsewhere on the genome. This kind of mechanism was supported by the discovery by Girirajan et al (2010) that individuals with severe neurodevelopmental disorders who had a deletion at the 16p12.1 locus often had a second CNV.  A genomic alteration that may have little or no effect in an unaffected relative appeared to have a particularly detrimental effect in combination with a second 'hit'. 
 
 In this study we also consider the possibility that presence of a sex chromosome trisomy might be associated with an unusually large number of CNVs across the entire genome. According to this hypothesis, the high rate of neurodevelopmental problems could be a direct consequence of an increased CNV burden - perhaps because whatever mechanism leads to a trisomy also disrupts CNV checkpoints. This, then, is our second hypothesis: that there is an increased burden of CNVs in individuals with a sex chromosome trisomy.
 
-The best source of evidence for an increased CNV burden comes from Rocca et al (2016), who presented evidence that men with Klinefelter syndrome (47,XXY) had an unusually high number of X-chromosome CNVs. They compared CNV burden on the X-chromosome in 94 men with Klinefelter (47, XXY) syndrome to that in 85 controls (43 males and 42 females), and reported a higher number of CNVs, especially duplications, in the Klinefelter group. Thirty-nine of them (41.5%) carried CNVs, compared to 12/42, (28.6%) of females, and 8/43, (18.6%) of males. As the authors noted, an increased CNV burden could provide an explanation for the variable phenotype, but they did not test for associations with phenotype in their sample. Their study raises the question of whether an increased rate of CNVs might be seen in other sex chromosome trisomies - XXX and XYY - and whether these might be found on the autosomes as well as the X-chromosome.
+The best source of evidence for an increased CNV burden comes from Rocca et al (2016), who presented evidence that men with Klinefelter syndrome (47,XXY) had an unusually high number of X-chromosome CNVs. They compared CNV burden on the X-chromosome in 94 men with Klinefelter (47, XXY) syndrome to that in 85 controls (43 males and 42 females), and reported a higher number of CNVs, especially duplications, in the Klinefelter group. Thirty-nine of them (41.5%) carried CNVs, compared to 12/42, (28.6%) of females, and 8/43, (18.6%) of males. As the authors noted, presence of additional CNVs in some individuals could provide an explanation for the variable phenotype, but they did not test for associations with phenotype in their sample. Their study raised the further question of whether an increased rate of CNVs might be seen in other sex chromosome trisomies - XXX and XYY - and whether these might be found on the autosomes as well as the X-chromosome.
 
 Further circumstantial evidence for an impact of CNV burden in cases of sex chromosome trisomy comes from Le Gall et al (2017), who focused on a group of 14 patients with sex chromosome trisomies in whom an additional causative event was suspected because of an unusually severe phenotype involving intellectual disability or other severe developmental disorder. They found seven patients carried a pathogenic CNV (one with Williams-Beuren syndrome, one with 7q11.23 duplication, one with 17q12 duplication, three with 16p11.2 duplication and one with a 15q11.3 deletion), as well as two with a likely pathogenic CNV and five with a variant of uncertain significance. Because their report focused only on cases with a known additional micro-deletion or -duplication, the authors were not, however, able to estimate the prevalence of additional pathogenic CNVs in cases of sex chromosome trisomy, or to show that a CNV was specifically related to the severity of the phenotype.
 
@@ -62,13 +62,14 @@ We will test two contrasting hypotheses, both of which link language and neurode
 
 2. Increased burden model:	SCT cases are more likely to carry a secondary pathogenic or likely pathogenic CNV that may contribute to their phenotype, compared to the comparison group (Figure 1 B).
 
-As shown in Figure 1, in model A, the comparison and SCT groups do not differ in CNV burden (x-axis), but they differ in the slope of the regression linking CNV burden to phenotype. In model B, the SCT group has a greater burden of CNVs, which is sufficient to account for the more severe phenotype in this group, without needing to postulate any difference between groups in the function linking CNV burden to phenotype. Both hypotheses are directional, and they are not mutually exclusive. 
+As shown in Figure 1, in model A, the comparison and SCT groups do not differ in CNV burden (x-axis), but they differ in the slope of the regression linking CNV burden to phenotype. In model B, the SCT group has a greater burden of CNVs that is sufficient to account for the more severe phenotype in this group, without needing to postulate any difference between groups in the function linking CNV burden to phenotype. Both hypotheses are directional, and they are not mutually exclusive. 
 
 Figure 1: Schematic of predicted relationships between genotype and phenotype 
 ```{r Fig1, echo=TRUE}
+#This chunk of script uses simulated data to illustrate models A and B
 #Aim is to depict contrast between Double Hit model and Increased CNV burden model for sex chromosome trisomies.
 #Simulate distribution of CNVs for both models, with probabilistic rule linking CNV size to presence of phenotype
-#Currently 10 binary phenotypes which are summed with added error to give continuous score.
+#Currently 10 binary phenotypes are summed with added error to give continuous score.
 
 #NB CNV size currently modeled as normally distributed; would be better if modelled to 
 #reflect fact that the freq goes down with size, as discussed here:
@@ -85,7 +86,7 @@ myvars<-c('sct','sizecnvA','sizecnvB','phenoA1','phenoA2','phenoA3','phenoA4','p
           'phenoB6','phenoB7','phenoB8','phenoB9','phenoB10','phenoBsum')
 
 #set up dataframe to save simulation results
-ncases<-120 #number of cases each for sct and control (roughly correct, though more controls in practice)
+ncases<-130 #number of cases each for sct and control (roughly correct, though more controls in practice)
 mydata<-data.frame(matrix(NA,nrow=ncases*2,ncol=length(myvars)))
 colnames(mydata)<-myvars
 range1<-1:ncases
@@ -107,7 +108,7 @@ mydata[range2,3]<-mydata[range2,2]+mysd*.8
     dvect<-pvect-rvect #if pvect value is high, then v likely to be +ve and vice versa
     mydata[,(i+3)]<-0 #whether or not phenotype present for this variable
     mycutoff<-.7 #the higher this value, the lower the correl between cnv/pheno
-    w<-which(dvect>mycutoff) #if dvect is above cutoff phenotype present
+    w<-which(dvect>mycutoff) #if dvect is above cutoff, phenotype present
     mydata[w,(i+3)]<-1
     sctcutoff<-.3 #can try changing this and mycutoff to see how relationship affected
     w<-which(dvect[range2]> sctcutoff) #different cutoff for sct cases
@@ -130,7 +131,7 @@ legend(-.05, 15, legend=c("Comparison", "SCT"),
 
 conphenomean<-mean(mydata$phenoAsum[range1])
 sctphenomean<-mean(mydata$phenoAsum[range2])
-abline(h=conphenomean, col='black')
+abline(h=conphenomean, col='black') #add lines to plot to show means for SCT and control on x and y axis
 abline(h=sctphenomean, col='red')
 concnvmeana<-mean(mydata$sizecnvA[range1])
 sctcnvmeana<-mean(mydata$sizecnvA[range2])
@@ -171,7 +172,7 @@ abline(v=sctcnvmeanb, col='red')
 ##Explanation of existing data <i>(required) </i>
 <i>If you indicate that you will be using some data that already exist in this study, please describe the steps you have taken to assure that you are unaware of any patterns or summary statistics in the data. This may include an explanation of how access to the data has been limited, who has observed the data, or how you have avoided observing any analysis of the specific data you will use in your study. The purpose of this question is to assure that the line between confirmatory and exploratory analysis is clear.</i>
 
-Both the participant phenotyping and genome-wide SNP array data were generated for the companion study preregistered by Newbury et al (2018). 
+Both the participant phenotyping and genome-wide SNP array data were generated for the companion study by Newbury et al (2018). 
 
 Data on language phenotypes is kept separately from data from CNV analysis and will not be linked until the protocol has been pre-registered. It is not possible to test either of the hypotheses without this information, as both involve predictions about relationships between genotype and phenotype. 
 
