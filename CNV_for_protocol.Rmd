@@ -317,7 +317,8 @@ First we upload the data and apply censoring to recode extreme values.
 ```{r readdata, echo=FALSE}
 ##############################################################################
 #Using test_script_cnv.R developed by Paul Thompson
-CNV_dat<-read.table('SLIC_df.txt',header=TRUE,stringsAsFactors=FALSE)
+#Using version of file with IDs anonymised = see renameSLICs.R
+CNV_dat<-read.table('SLIC_df_anon.txt',header=TRUE,stringsAsFactors=FALSE)
 #Function borrowed and adapted from the 'scales' package. This applies the censoring to the two potentially interesting variables.
 #str(CNV_dat) #uncomment to inspect variables
 censor_PT<-function (x, limit = 7, only.finite = TRUE) 
