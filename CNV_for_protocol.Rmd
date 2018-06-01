@@ -21,6 +21,7 @@ require(sandwich)
 require(msm)
 require(lemon) #for glegend
 require(MASS)
+require(simglm)
 ```
 ###Title: Copy number variation (CNV) and language phenotype severity in children with a sex chromosome trisomy 
 
@@ -544,31 +545,51 @@ anova(m2, m1, test="Chisq")
 
 ### Statistical power analysis for poisson regression interaction via Monte Carlo simulation
 
+Statistical power is assessed using the R package 'simglm' (LeBeau, 2017) and makes some assumptions about the size of regression parameters for the simulation to be accurate. The parameters should be interpretted on with respect to the log(phenotype) dependent measure. For example, a single point change in the sum_pLi variable would equate to a 1.34 change in the phenotype ($\exp^{0.3}$).
+
 ```{r pois_pwr, echo=TRUE}
-#---------------------------------------------------------------------------#
-
-poisson_inter = function(n=100) {
-  Group = rep(0:1,each=(n/2))  # sample size is 100
-  sum_pLi = rnorm(n)
-  Ep = -1.5 + 0.15*sum_pLi + 0.3*Group + 0.05*Group*sum_pLi
-  y = exp(Ep)
-
-  pois.int.sig = glm(y~as.factor(Group)*sum_pLi, family=poisson)
-  reject = ifelse( coef(summary(pois.int.sig))[4,4] < .05, 1, 0)
-      # The coef() function above gets the parameter estimates; the [4,4] 
-      # element is the p-value for the interaction.
-  return(reject)
-}
-# intercept is the base rate and everything else relative to this. Then for every one unit increase in sum_pLi, there is a 1.16 increase in phenoord. SLIC participants have 1.35 times higher phenoord than controls.  
-
-
-pow1 = replicate(100, poisson_inter(n=4500))
-
-binom.test(sum(pow1), 100)
-
 
 #---------------------------------------------------------------------------#
+
+# single level Poisson (glm) 
+
+
+fixed <- ~ 1 + sum_pLi + Group.o + sum_pLi:Group.o
+
+fixed_param <- c(-1.5, 0.3, 0.1, 0.1)
+
+cov_param <- list(dist_fun = c('rnorm'),
+                  var_type = c("single"),
+                  opts = list(list(mean = 0, sd = 2)))
+
+fact_vars <- list(numlevels = 2,var_type='single')
+#cor_vars<-0.3
+#--------------------------------------------------------------------#
+n <- 200
+
+pow_param <- c('(Intercept)', 'sum_pLi', 'Group.o','sum_pLi:Group.o')
+alpha <- .01
+pow_dist <- "z"
+pow_tail <- 2
+replicates <- 100
+error_var <- 5
+with_err_gen = 'rnorm'
+
+#--------------------------------------------------------------------#
+
+power_out <- sim_pow_glm(fixed = fixed, fixed_param = fixed_param, 
+                         cov_param = cov_param, fact_vars = fact_vars,
+                         n = n, data_str = "single", 
+                         outcome_type = 'poisson', 
+                         pow_param = pow_param, alpha = alpha,
+                         pow_dist = pow_dist, pow_tail = pow_tail, 
+                         replicates = replicates, raw_power = FALSE)
+#---------------------------------------------------------------------------#
+knitr::kable(power_out)
+
 ```
+
+The table shows the relative power for each parameter estimate at a nominal N=200, participants. Note this is only correct based on the assumptions made.
 
 ## References
 
@@ -581,6 +602,9 @@ Bishop, D. V. M., Jacobs, P. A., Lachlan, K., Wellesley, D., Barnicoat, A., Boyd
 Girirajan, S., Rosenfeld, J. A., Cooper, G. M., Antonacci, F., Siswara, P., Itsara, A., . . . Eichler, E. E. (2010). A recurrent 16p12.1 microdeletion supports a two-hit model for severe developmental delay. Nature Genetics, 42, 203-209. doi:10.1038/ng.534
 
 Kalnak, N., Stamouli, S., Peyrard-Janvid, M., Rabkina, I., Becker, M., Klingberg, T., . . . Tammimies, K. (2018, in press). Enrichment of rare Copy Number Variation in children with Developmental Language Disorder. Clinical Genetics. 
+
+LeBeau, B. (2017). simglm: Simulate Models Based on the Generalized Linear Model. R package
+version 0.6.0. https://CRAN.R-project.org/package=simglm
 
 Le Gall, J., Nizon, M., Pichon, O., Andrieux, J., Audebert-Bellanger, S., Baron, S., . . . Isidor, B. (2017). Sex chromosome aneuploidies and copy-number variants: a further explanation for neurodevelopmental prognosis variability? European Journal of Human Genetics, 25(8), 930-934. doi:10.1038/ejhg.2017.93
 
