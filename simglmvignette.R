@@ -1,4 +1,11 @@
+##Session information
+require(simglm)
+sessionInfo()
+
+#First set of vignettes work fine on a Mac
+#-----------------------------------------------------------------------
 #simglm vignette
+#-----------------------------------------------------------------------
 
 fixed <- ~ 1 + act + diff + numCourse + act:numCourse
 fixed_param <- c(2, 4, 1, 3.5, 2)
@@ -15,10 +22,11 @@ temp_single <- sim_reg(fixed = fixed, fixed_param = fixed_param,
                        n = n, error_var = error_var, 
                        with_err_gen = with_err_gen, 
                        data_str = "single")
-
+head(temp_single)
 
 #-----------------------------------------------------------------------
 # with factor, categorical, or ordinal variable
+#-----------------------------------------------------------------------
 fixed <- ~ 1 + act_o + diff.o + numCourse_f + act_o:numCourse_f
 fixed_param <- c(0.8, 1, 0.2, 0.1, 0, 0.15, 0.2, 0.5, 0.02, -0.6, -0.1)
 cov_param <- NULL
@@ -33,6 +41,7 @@ temp_single_o <- sim_reg(fixed = fixed, fixed_param = fixed_param,
                          cov_param = cov_param, n = n, error_var = error_var,
                          with_err_gen = with_err_gen, data_str = "single", 
                          fact_vars = fact_vars)
+temp_single_o
 #-----------------------------------------------------------------------
 
 
@@ -58,6 +67,7 @@ power_out <- sim_pow(fixed = fixed, fixed_param = fixed_param,
                      pow_param = pow_param, alpha = alpha,
                      pow_dist = pow_dist, pow_tail = pow_tail, 
                      replicates = replicates)
+head(power_out)
 #--------------------------------------------------------------------#
 # Examples below that cauase this error when run on a mac:
 #  Error in sample.int(length(x), size, replace, prob) : cannot take a sample larger than the population when 'replace = FALSE'
@@ -84,7 +94,7 @@ sim_reg(fixed = fixed, fixed_param = fixed_param, random = random,
 
 #--------------------------------------------------------------------#
 #another example from https://brandonlebeau.org/2017/07/24/simglm-jsm/: 
-# this one does NOT work
+# this one does NOT work - error message as above
 fixed <- ~ 1 + act_o + income + grad_degree_f
 fixed_param <- c(0.5, 0.4, 0.02, 0.6)
 random <- ~ 1 
@@ -115,7 +125,6 @@ cov_param <- list(dist_fun = c('rnorm'),
 
 fact_vars <- list(numlevels = 2,var_type='single')# fact_vars is a list that contains numlevels and var_type.
 #cor_vars<-0.3
-#--------------------------------------------------------------------#
 myn <- 130 #sample size
 error_var <- 5 #error variance
 with_err_gen = 'rnorm' #distribution of residuals
