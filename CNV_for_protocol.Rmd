@@ -2,7 +2,7 @@
 title: 'Copy number variation (CNV) and language phenotype severity in children with
   and without a sex chromosome trisomy '
 author: "Hayley Mountford, Dorothy Bishop, Paul Thompson, & Dianne Newbury"
-date: "05/06/2018"
+date: "06/06/2018"
 output:
   word_document: default
   pdf_document: default
@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-#
+#This version incorporates comments from DFN, 6/6/18
 knitr::opts_chunk$set(echo = FALSE, warning=FALSE)
 #options(scipen = 999) #turn off scientific notation
 
@@ -38,7 +38,7 @@ A notable feature of sex chromosome trisomies is the variability of the phenotyp
 
 In the current paper, we consider another way in which an extra sex chromosome could amplify genetic risk, by interacting with copy number variants (CNVs).  The history of recognition of CNVs is documented by Beckmann et al (2007): these are deletions or insertions affecting chunks of DNA 1 kb in length or larger, which were first described in the 1960s and 1970s. It was a few decades later before it was recognised that this kind of large-scale submicroscopic variation is common and not necessarily pathological. However, where CNVs are large and/or affect the function of key genes, they are likely to be associated with neurodevelopmental disorders, notably intellectual disability or autism spectrum disorder. One study also found an association with severe developmental language disorder (DLD) (Kalnak et al, 2018).  
 
-Large, disruptive CNVs tend to be relatively rare in populations. However, smaller CNVs are more common, and Simpson et al (2015) found that there was a slight increase in these in cases of DLD and their relatives, compared to a control sample. The fact that unaffected relatives showed the increase as well as affected individuals suggested that an increased burden of CNVs may play a cumulative role in mediating an increased risk of language disorder, but the precise impact may depend on the location and extent of the CNV, and whether it disrupts gene function. The specific combination of inherited events may also be important. 
+Large, disruptive CNVs tend to be relatively rare in populations. However, smaller CNVs are more common, and Simpson et al (2015) found that there was a slight increase in these in cases of DLD and their relatives, compared to a control sample. The fact that unaffected relatives showed the increase as well as affected individuals suggested that an increased burden of CNVs may play a cumulative role in mediating an increased risk of language disorder, but the precise impact may depend on the location and extent of the CNV, and whether it disrupts gene function. The specific combination of inherited events may also be important. As more information becomes available regarding the variability across the Human Genome, it has become apparent that some genes are more sensitive to change than others. Such "dosage-sensitive" genes will be more affected by copy number events. Accordingly, large databases such as the Exome Aggregation Consortium (ExAC) have attempted to qualify the dosage sensitivity of genes by scores of sequence constraint, such as the pLI score (probability of being loss-of-function (LoF) intolerant - Lek et al).*Hayley: could you please add this ref?*
 
 A CNV-based version of the double-hit hypothesis predicts that the risk of neurodevelopmental disorder associated with a CNV will be increased when there is a trisomy, because of interactions between CNVs and the overexpression of genes on the sex chromosomes. This is the first hypothesis we plan to test, and relates to the idea of a two-hit model (Veltman & Brunner, 2010), whereby the effect of a microdeletion is not deterministic, but rather acts as a risk factor that can increase the impact of  deletions or duplications elsewhere on the genome. This kind of mechanism was supported by the discovery by Girirajan et al (2010) that individuals with severe neurodevelopmental disorders who had a deletion at the 16p12.1 locus often had a second CNV.  A genomic alteration that may have little or no effect in an unaffected relative appeared to have a particularly detrimental effect in combination with a second 'hit'. 
 
@@ -53,7 +53,7 @@ We plan to study two groups of children: a) a sample of children with a sex chro
 ##Research Questions *(required)* 
 *Please list each research question included in this study.*
 
-1.	Is the total size, number or predicted intolerance score of autosomal CNVs associated with greater phenotypic severity in individuals with sex chromosome trisomies compared to a comparison sample of normal karyotype? This would provide evidence of an interaction between autosomal genes and genes on the sex chromosomes 
+1.	Is the total size, number or predicted intolerance score of autosomal CNVs associated with greater phenotypic severity in individuals with sex chromosome trisomies compared to a comparison sample of normal karyotype? This would provide evidence of an interaction between copy number events in autosomal genes and genes on the sex chromosomes 
 
 2.	Are individuals with a sex chromosome trisomy more likely than those of normal karyotype to carry other secondary large CNVs on the autosomes, which may have gone undiagnosed? 
 
@@ -69,6 +69,7 @@ We will test two contrasting hypotheses, both of which link language and neurode
 As shown in Figure 1, in model A, the comparison and SCT groups do not differ in CNV burden (x-axis), but they differ in the slope of the regression linking CNV burden to phenotype. In model B, the SCT group has a greater burden of CNVs that is sufficient to account for the more severe phenotype in this group, without needing to postulate any difference between groups in the function linking CNV burden to phenotype. Both hypotheses are directional, and they are not mutually exclusive. 
 
 Figure 1: Schematic of predicted relationships between genotype and phenotype 
+![Figure 1. *Schematic of predicted relationships between genotype and phenotype *](CNV_models.png)
 
 ##Explanation of existing data *(required) *
 *If you indicate that you will be using some data that already exist in this study, please describe the steps you have taken to assure that you are unaware of any patterns or summary statistics in the data. This may include an explanation of how access to the data has been limited, who has observed the data, or how you have avoided observing any analysis of the specific data you will use in your study. The purpose of this question is to assure that the line between confirmatory and exploratory analysis is clear.*
@@ -77,9 +78,9 @@ Both the participant phenotyping and genome-wide SNP array data were generated f
 
 Data on language phenotypes is kept separately from data from CNV analysis and will not be linked until the protocol has been pre-registered. It is not possible to test either of the hypotheses without this information, as both involve predictions about relationships between genotype and phenotype. 
 
-Access to phenotypic data is restricted to Professor Bishop and has not been made available to the genetics team. For our previous study by Newbury et al (2018), we have linked the phenotypic data to results from 47 specific single-nucleotide polymorphisms from two candidate genes. This level of genetic data does not provide information about the CNVs that are the focus of the current study.
+Access to phenotypic data is restricted to the OSSCI team (DVMB and PAT) and has not been made available to the genetics team. For our previous study by Newbury et al (2018), we have linked the phenotypic data to results from 47 specific single-nucleotide polymorphisms from two candidate genes. This level of genetic data does not provide information about the CNVs that are the focus of the current study.
 
-The CNV analysis starts from raw data in the form of genome-wide SNP arrays generated by the Newbury et al (2018) study, which is in the form of a Genome Studio (Illumina) project file (.bsc). This contains the genotype calls, signal ratios and minor allele frequency data for 500 participants across 600,000 genome wide SNP markers. High quality calling of copy number variants (CNVs) is being performed by Dr Hayley Mountford using software packages outside of Genome Studio. Results of her analysis will not be made available to Prof Bishop's team until after this protocol is preregistered.
+The CNV analysis starts from raw data in the form of genome-wide SNP arrays generated by the Newbury et al (2018) study, which is in the form of a Genome Studio (Illumina) project file (.bsc). This contains the genotype calls, signal ratios and minor allele frequency data for 500 participants across 600,000 genome wide SNP markers. High quality calling of copy number variants (CNVs) is being performed by HM using software packages outside of Genome Studio which interpret signal intensity and ratios to identify copy number changes. Results of her analysis will not be made available to DVMB and PAT until after this protocol is preregistered.
 
 ##Data collection procedures *(required)* 
 *Please describe the process by which you will collect your data. If you are using human subjects, this should include the population from which you obtain subjects, recruitment efforts, payment for participation, how subjects will be selected for eligibility from the initial pool (e.g. inclusion and exclusion rules), and your study timeline. For studies that don't include human subjects, include information about how you will collect samples, duration of data gathering efforts, source or location of samples, or batch numbers you will use.*
@@ -89,7 +90,7 @@ SCT cases aged from 5 to 16 years were recruited through re-contacting participa
 
 Figure 2 shows the numbers of children with sex chromosome trisomies in relation to the type of trisomy and the reason for diagnosis. We distinguish here between those diagnosed in the course of investigations for neurodevelopmental disorder and the remainder; only the latter group can be used to estimate whether the CNV burden is unduly high in those with a sex chromosome trisomy, because their diagnosis was independent of neurodevelopmental status. However, both groups combined can be used to test predictions about genotype/phenotype associations.
 
-![Figure 2. *N children with each type of trisomy, divided according to whether diagnosis was made when investigating neurodevelopmental disorder.*](fig2_2018_02_06_fromWOR.png)
+![Figure 2. *N children with each type of trisomy, divided according to whether diagnosis was made when investigating neurodevelopmental disorder. From Newbury et al (2018)*](fig2_2018_02_06_fromWOR.png)
 
 ###Twin Comparison Group Recruitment
 Twins in the comparison group had been recruited for a study of language and laterality (Wilson and Bishop, 2018) and had undergone the same test battery as the SCT group. Twins were recruited via information sheets sent to state schools, and also via the research project Facebook page. In this sample, we aimed to recruit a sample where around 75% pairs would include at least twin with developmental language disorder (DLD). This was achieved by selecting cases for inclusion on the basis of parental response on a telephone interview: any mention of language delay, history of speech and language therapy, current language problems or dyslexia was coded as 'parental concern'. 
@@ -99,12 +100,12 @@ A flowchart showing the numbers of twins with specific characteristics is shown 
 ![Figure 3. *Flowchart showing characteristics of children recruited to comparison groups. Information about zygosity, gender and parental concern is shown for information, but was not used in the analysis (From Newbury et al, 2018).*](fig3_2018_02_06_fromWOR.png)
 
 ###Test battery
-The test battery is detailed by Newbury et al (2018) and specific measures are described more fully below. It was designed to provide a quantitative estimate of language, literacy and communication ability in children aged 5 to 16 years. In addition, parents completed a telephone interview, and were invited to complete two questionnaires and an online diagnostic interview.
+The test battery is described by Newbury et al (2018) and specific details are given below. The battery was designed to provide a quantitative estimate of language, literacy and communication ability in children aged 5 to 16 years. In addition, parents completed a telephone interview, and were invited to complete two questionnaires and an online diagnostic interview.
 
 ###Genetic Data 
 DNA was collected and extracted from saliva samples (OG-500, DNA Genotek) using the manufacturer recommended protocol. DNA, but not phenotypic data, was collected from the parents of the participants where possible, and they were included on the genotyping array to assist with the confirmation of inheritance of patterns. 
 
-Samples were genotyped using the genome-wide SNP array Infinium Global Screening Array-24(v1) targeting 692,824 common and rare SNPs suitable for both genotyping and CNV analysis. SNP array data were called using Illumina GenomeStudio v.2.03. Individual SNPs with a GenTrain (quality) score of <0.5 and sample with <0.9 of SNPs called were excluded. 
+Samples were genotyped using the genome-wide SNP array Infinium Global Screening Array-24(v1) targeting 692,824 common and rare SNPs suitable for both genotyping and CNV analysis. SNP array data were called using Illumina GenomeStudio v.2.03. Individual SNPs with a GenTrain (quality) score of < 0.5 and samples with < 0.9 of SNPs called were excluded. 
 
 ##Sample size (required) 
 As shown in Figure 2, the SCT group consisteed of 42 girls with XXX, 43 boys with XXY, and 45 boys with XYY karyotype combined into a group of 130 children with a sex chromosome trisomy. The comparison group were selected from 194 twin pairs (Figure 3), with DNA samples available for 370/388 (95%) of cases.
@@ -112,7 +113,7 @@ As shown in Figure 2, the SCT group consisteed of 42 girls with XXX, 43 boys wit
 Genotyping data also includes 215 samples from first degree relatives of participants. This makes it possible to establish which parent the CNV was inherited from, or if it was de novo, which is particularly useful if a potentially pathogenic CNV is discovered. 
 *Hayley to add more information here*
 
-All available data from genotyping will undergo CNV analysis in the current study. [*Hayley: does that include the parents?*]
+All available data from genotyping of children and parents will undergo CNV analysis, as this improves the specificity of calling.
 
 ##Sample size rationale *(required)*
 Our study is constrained by the numbers we were able to recruit, with further loss of cases which did not pass genotyping quality control. We had originally planned the study to detect an association between specific SNPs and language outcomes in children with SCTs. The power to detect given effect sizes in the current study is discussed below.
@@ -137,7 +138,7 @@ In an initial telephone interview, parents were asked about the child's medical 
 
 ##Genetic measures
 
-The CNV analysis will test for the number of CNVs, total genetic region covered by CNVs (Mbp) and a sum of the predicted likelihood of intolerance scores for each of the SCT and comparison group individuals. Individual large and pathogenic CNVs will be identified separately as these may be of clinical significance.  
+The CNV analysis will test for the number of CNVs, total base pairs covered by CNVs (Mbp) and a sum of the predicted likelihood of intolerance scores for each of the SCT and comparison group individuals. Individual large and pathogenic CNVs will be identified separately as these may be of clinical significance.  
 
 Genotypes have been previously called (Newbury et al 2018) using Genome Studio (Illumina), and beta allele frequencies and log 2 ratio for each of the 600,000 SNPs exported to a .csv file. CNV calling will be performed using two separate methods; PennCNV (Wang et al 2007), a HMM based method written in Perl, and QuantiSNP (Colella et al 2007) written in Matlab. CNVs will be considered high confidence when they overlap by at least 50% between the two methods. CNV regions will be annotated for gene names using Annovar (Wang and Hakonarson, 2010). Individual totals of CNV number, size and predicted likelihood of intolerance (pLi) score will be calculated using R. [Hayley: can we include the script at end of the doc?]
 
@@ -150,7 +151,8 @@ Our focus will be on one of the phenotypic measures used by Newbury et al (2018)
 Three measures of CNV burden will be used: 
 A)	Mean of number of CNVs per group
 B)	Mean of total CNV size per group
-C)	Mean of sum of pLi scores from each CNV in each individual, and compared per group
+C)	Mean of sum of pLi scores from each CNV in each individual, and compared per group.
+Parent CNV events will be called but not included in the burden analyses.
 
 ##Study design (required) 
 *Describe your study design. Examples include two-group, factorial, randomized block, and repeated measures. Is it a between (unpaired), within-subject (paired), or mixed design? Describe any counterbalancing required. Typical study designs for observation studies include cohort, cross sectional, and case-control studies.*
@@ -267,7 +269,7 @@ mydata[range2,3]<-mydata[range2,2]+mysd*.8
 mydata[,2:3]  <-(3+mydata[,2:3])/3-.3
 
 
-#png(filename = "CNV_models.png", width = 500, height = 300)#uncomment to create png file
+png(filename = "CNV_models.png", width = 500, height = 300)#uncomment to create png file
 par(mfrow=c(1,2))
   
 plot(mydata$sizecnvA,mydata$phenoAsum,col=(mydata$sct+1),
@@ -313,7 +315,7 @@ concnvmeanb<-mean(mydata$sizecnvB[range1])
 sctcnvmeanb<-mean(mydata$sizecnvB[range2])
 abline(v=concnvmeanb, col='black')
 abline(v=sctcnvmeanb, col='red')
-#dev.off() #uncomment this if printing to png file
+dev.off() #uncomment this if printing to png file
 ```
 The remaining scripts are developed to handle these questions:
 
