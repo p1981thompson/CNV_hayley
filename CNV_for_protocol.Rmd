@@ -773,7 +773,7 @@ print(paste0('Correlation of pLI/phenotype: comparison = ',r0,'; SCT = ',r1))
 In the simulation, we keep the beta values specified for the main effects, and compute the power as we vary the value of beta for the interaction. In addition, we compute the Spearman correlation between the CNV burden and phenotype for the comparison and SCT groups on each run, so we can get a sense of how big a difference we are able to detect.
 ```{r power} 
  
-  data.pow<-data.frame(matrix(NA,nrow=20,ncol=11))
+  data.pow<-data.frame(matrix(NA,nrow=16,ncol=11))
   pvec<-data.frame(matrix(NA,nrow=100,ncol=4))
  names(pvec)<-c("Intercept","sum_pLi","Group","sum_pLi:Group")
  
